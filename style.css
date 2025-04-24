@@ -1,0 +1,448 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    overflow: hidden;
+}
+
+.container {
+    position: relative;
+    max-width: 850px;
+    width: 100%;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -50%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, #667eea, #764ba2);
+    transform: skewX(-15deg);
+    z-index: 0;
+    transition: 0.8s ease-in-out;
+}
+
+.container.sign-in-mode::before {
+    left: 50%;
+}
+
+.container.sign-in-mode .sign-up {
+    pointer-events: none;
+}
+
+.container.sign-in-mode .sign-in {
+    pointer-events: auto;
+}
+
+.container .forms {
+    display: flex;
+    align-items: center;
+    height: 600px;
+    width: 200%;
+    transition: height 0.2s ease;
+}
+
+.container .form-container {
+    width: 50%;
+    padding: 40px;
+    background-color: #fff;
+    transition: all 0.2s ease;
+}
+
+.container.sign-in-mode .form-container.sign-in {
+    transform: translateX(-100%);
+}
+
+.container .form-container.sign-up {
+    opacity: 1;
+    transition: opacity 0.4s ease;
+}
+
+.container.sign-in-mode .form-container.sign-up {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.container .form-container h1 {
+    font-size: 30px;
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.container .form-container .social-icons {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.container .form-container .social-icons .icon {
+    height: 40px;
+    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 50%;
+    margin: 0 5px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.container .form-container .social-icons .icon:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.container .form-container span {
+    display: block;
+    text-align: center;
+    margin: 15px 0;
+    color: #000000;
+    font-size: 14px;
+    position: relative;
+}
+
+.container .form-container span::before,
+.container .form-container span::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 30%;
+    height: 1px;
+    background: #ddd;
+}
+
+.container .form-container span::before {
+    left: 0;
+}
+
+.container .form-container span::after {
+    right: 0;
+}
+
+.container .form-container .input-group {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.container .form-container .input-group input {
+    width: 100%;
+    padding: 12px 40px 12px 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    outline: none;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.container .form-container .input-group input:focus {
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
+}
+
+.container .form-container .input-group i {
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    transform: translateY(-50%);
+    color: #666;
+}
+
+.container .form-container .input-group input:focus + i {
+    color: #667eea;
+}
+
+.container .form-container .error-message {
+    color: #e74c3c;
+    font-size: 12px;
+    margin-top: 5px;
+    display: none;
+}
+
+.container .form-container a {
+    display: block;
+    text-align: right;
+    color: #667eea;
+    font-size: 14px;
+    text-decoration: none;
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
+}
+
+.container .form-container a:hover {
+    color: #764ba2;
+    text-decoration: underline;
+}
+
+.container .form-container .auth-btn {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: #fff;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.container .form-container .auth-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.toggle-container {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 50%;
+    height: 100%;
+    overflow: hidden;
+    transition: all 0.8s ease-in-out;
+    z-index: 10;
+}
+
+.container.sign-in-mode .toggle-container {
+    left: 0;
+}
+
+.toggle {
+    position: relative;
+    background: linear-gradient(to right, #667eea, #764ba2);
+    height: 100%;
+    color: #fff;
+    left: -100%;
+    width: 200%;
+    transform: translateX(0);
+    transition: all 0.8s ease-in-out;
+}
+
+.container.sign-in-mode .toggle {
+    transform: translateX(50%);
+}
+
+.toggle-panel {
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0 40px;
+    text-align: center;
+    top: 0;
+    transform: translateX(0);
+    transition: all 0.8s ease-in-out;
+}
+
+.toggle-left {
+    transform: translateX(-200%);
+}
+
+.container.sign-in-mode .toggle-left {
+    transform: translateX(0);
+}
+
+.toggle-right {
+    right: 0;
+    transform: translateX(0);
+}
+
+.container.sign-in-mode .toggle-right {
+    transform: translateX(200%);
+}
+
+.toggle-panel h1 {
+    font-size: 28px;
+    margin-bottom: 15px;
+}
+
+.toggle-panel p {
+    font-size: 14px;
+    line-height: 1.5;
+    margin-bottom: 30px;
+}
+
+.toggle-panel button {
+    background: transparent;
+    border: 1px solid #fff;
+    color: #fff;
+    padding: 10px 30px;
+    border-radius: 30px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.toggle-panel button:hover {
+    background: #fff;
+    color: #764ba2;
+}
+
+.hidden {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(30px);
+    transition: all 0.5s ease;
+}
+
+.container.sign-in-mode .toggle-left .hidden {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0);
+}
+
+.container:not(.sign-in-mode) .toggle-right .hidden {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0);
+}
+
+/* Toast Notification */
+.toast {
+    position: fixed;
+    top: 25px;
+    right: 30px;
+    border-radius: 12px;
+    background: #fff;
+    padding: 20px 35px 20px 25px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    border-left: 6px solid #4070f4;
+    overflow: hidden;
+    transform: translateX(calc(100% + 30px));
+    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.35);
+    z-index: 1000;
+}
+
+.toast.active {
+    transform: translateX(0%);
+}
+
+.toast .toast-content {
+    display: flex;
+    align-items: center;
+}
+
+.toast-content .check {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 35px;
+    width: 35px;
+    background-color: #4070f4;
+    color: #fff;
+    font-size: 20px;
+    border-radius: 50%;
+}
+
+.toast-content .message {
+    display: flex;
+    flex-direction: column;
+    margin: 0 20px;
+}
+
+.message .text {
+    font-size: 16px;
+    font-weight: 400;
+    color: #666;
+}
+
+.message .text.text-1 {
+    font-weight: 600;
+    color: #333;
+}
+
+.toast .close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    padding: 5px;
+    cursor: pointer;
+    opacity: 0.7;
+}
+
+.toast .close:hover {
+    opacity: 1;
+}
+
+.toast .progress {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 3px;
+    width: 100%;
+    background: #ddd;
+}
+
+.toast .progress:before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    background-color: #4070f4;
+}
+
+.progress.active:before {
+    animation: progress 5s linear forwards;
+}
+
+@keyframes progress {
+    100% {
+        right: 100%;
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .container {
+        max-width: 90%;
+    }
+    
+    .toggle-container {
+        display: none;
+    }
+    
+    .form-container {
+        width: 100% !important;
+    }
+    
+    .container.sign-in-mode .form-container.sign-in {
+        transform: translateX(0);
+    }
+    
+    .container::before {
+        display: none;
+    }
+    
+    .container.sign-in-mode .form-container.sign-up {
+        display: none;
+    }
+    
+    .container:not(.sign-in-mode) .form-container.sign-in {
+        display: none;
+    }
+}
